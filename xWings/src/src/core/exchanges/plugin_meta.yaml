@@ -1,0 +1,45 @@
+# File: exchanges/plugin_meta.yaml
+# Purpose: Metadata for exchange plugins in xWings trading system
+# Notes: Subaccount names must match keys in client_credentials_template.yaml subaccounts and support nested IDs (e.g., okx.test.sub1).
+#        Ensure trading_config in client_credentials_template.yaml defines leverage and timeframes for each subaccount/symbol.
+# Updated: 2025-06-27 02:20 AM PDT
+
+plugins:
+  - name: okx
+    version: 1.0.0
+    enabled: true
+    module: core.exchanges.okx
+    class: OkxExchange
+    supported_methods:
+      - fetch_ohlcv
+      - place_order
+      - fetch_balance
+      - subscribe_kline
+      - set_leverage
+      - fetch_ticker
+    subaccounts:
+      - name: test
+        environment: test
+      - name: live
+        environment: live
+      - name: test.sub1
+        environment: test
+  - name: binance
+    version: 0.9.0
+    enabled: true
+    module: core.exchanges.binance
+    class: BinanceExchange
+    supported_methods:
+      - fetch_ohlcv
+      - place_order
+      - fetch_balance
+      - subscribe_kline
+      - set_leverage
+      - fetch_ticker
+    subaccounts:
+      - name: test
+        environment: test
+      - name: live
+        environment: live
+      - name: test.sub1
+        environment: test
